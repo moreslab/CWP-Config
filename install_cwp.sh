@@ -67,8 +67,9 @@ else
 	fi
 fi
 echo "####### FIN INSTALANDO CWP #######"
-
+sleep 10
 echo "####### CONFIGURANDO CSF #######"
+sleep 10
 if [ ! -d /etc/csf ]; then
         echo "csf no detectado, descargando!"
 	touch /etc/sysconfig/iptables
