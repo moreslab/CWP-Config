@@ -66,7 +66,7 @@ service sshd restart
 
 # SI TIENE SOLO IPTABLES
 if [ -f /etc/sysconfig/iptables ]; then
-	sed -i 's/dport 22 /dport 2022 /' /etc/sysconfig/iptables
+	sed -i 's/dport 22 /dport 33330 /' /etc/sysconfig/iptables
 	service iptables restart 2>/dev/null
 fi
 
@@ -75,8 +75,8 @@ if systemctl is-enabled firewalld | grep "^enabled$" > /dev/null; then
 	if systemctl is-active firewalld | grep "^inactive$" > /dev/null; then
 		service firewalld restart
 	fi
-	firewall-cmd --permanent --add-port=2022/tcp > /dev/null
-	firewall-offline-cmd --add-port=2022/tcp > /dev/null
+	firewall-cmd --permanent --add-port=33330/tcp > /dev/null
+	firewall-offline-cmd --add-port=33330/tcp > /dev/null
 	firewall-cmd --reload 
 fi
 
